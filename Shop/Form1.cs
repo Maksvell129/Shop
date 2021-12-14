@@ -51,7 +51,8 @@ namespace Shop
                     }
                     else if (comboBoxSelectRole.SelectedItem.ToString() == "SELLER")
                     {
-                        MessageBox.Show("You are seller");
+                        //MessageBox.Show("You are seller");
+                        new SellingForm().Show();
                     }
                 }
                 else
@@ -59,6 +60,11 @@ namespace Shop
                     MessageBox.Show("Select a role");
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

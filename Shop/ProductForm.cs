@@ -41,6 +41,8 @@ namespace Shop
             dt.Load(rdr);
             comboBoxSelectCategory.ValueMember = "categoryName";
             comboBoxSelectCategory.DataSource = dt;
+            comboBoxSelectCatShow.ValueMember = "categoryName";
+            comboBoxSelectCatShow.DataSource = dt;
             con.Close();
         }
 
@@ -163,6 +165,18 @@ namespace Shop
         {
             textBoxID.Text = textBoxAmount.Text = textBoxName.Text = textBoxPrice.Text = "";
 
+        }
+
+        private void comboBoxSelectCatShow_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            con.Open();
+            string query = "select * from ProductTbl where ProductCategory='"+comboBoxSelectCatShow.SelectedValue.ToString()+"'";
+            SqlDataAdapter sda = new SqlDataAdapter(query,con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            dataGridViewProducts.DataSource = ds.Tables[0];
+            con.Close();
         }
     }
 }
