@@ -34,7 +34,6 @@ namespace Shop
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.comboBoxSelectRole = new System.Windows.Forms.ComboBox();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.labelShop = new System.Windows.Forms.Label();
@@ -87,19 +86,6 @@ namespace Shop
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(238, 34);
             this.textBoxPassword.TabIndex = 4;
-            // 
-            // comboBoxSelectRole
-            // 
-            this.comboBoxSelectRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxSelectRole.FormattingEnabled = true;
-            this.comboBoxSelectRole.Items.AddRange(new object[] {
-            "ADMIN",
-            "SELLER"});
-            this.comboBoxSelectRole.Location = new System.Drawing.Point(481, 151);
-            this.comboBoxSelectRole.Name = "comboBoxSelectRole";
-            this.comboBoxSelectRole.Size = new System.Drawing.Size(238, 37);
-            this.comboBoxSelectRole.TabIndex = 5;
-            this.comboBoxSelectRole.Text = "Select Role";
             // 
             // buttonLogin
             // 
@@ -166,7 +152,6 @@ namespace Shop
             this.Controls.Add(this.labelShop);
             this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.buttonLogin);
-            this.Controls.Add(this.comboBoxSelectRole);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.labelPassword);
@@ -189,7 +174,6 @@ namespace Shop
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.ComboBox comboBoxSelectRole;
         private System.Windows.Forms.Button buttonLogin;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private System.Windows.Forms.Label labelShop;

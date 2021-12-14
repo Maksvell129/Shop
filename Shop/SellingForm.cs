@@ -15,9 +15,11 @@ namespace Shop
     public partial class SellingForm : Form
     {
         Order order = new Order();
+        Seller seller = new Seller();
 
-        public SellingForm()
+        public SellingForm(Seller _seller)
         {
+            seller = _seller;
             InitializeComponent();
         }
 
@@ -31,6 +33,7 @@ namespace Shop
             populate();
             labelDate.Text = DateTime.Today.Day.ToString() + "/" + DateTime.Today.Month.ToString() + "/" + DateTime.Today.Year.ToString();
             order.Date = labelDate.Text;
+            labelUsername.Text = seller.Name;
         }
         
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Проекты VS\2kurs\ЯП\Shop\ShopDb.mdf;Integrated Security=True;Connect Timeout=30");
@@ -103,6 +106,11 @@ namespace Shop
             {
                 printDocument1.Print();
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
