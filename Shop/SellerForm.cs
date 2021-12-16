@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DataLib;
+using BusinessLib;
 
 namespace Shop
 {
@@ -45,6 +47,7 @@ namespace Shop
             textBoxAge.Text = dataGridViewSellers.SelectedRows[0].Cells[2].Value.ToString();
             textBoxPhone.Text = dataGridViewSellers.SelectedRows[0].Cells[3].Value.ToString();
             textBoxPassword.Text = dataGridViewSellers.SelectedRows[0].Cells[4].Value.ToString();
+            checkBoxIsAdmin.Checked= Convert.ToBoolean(dataGridViewSellers.SelectedRows[0].Cells[5].Value.ToString());
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -57,12 +60,13 @@ namespace Shop
                 }
                 else
                 {
-                    con.Open();
-                    string query = "delete from SellerTbl where SellerId=" + textBoxID.Text + "";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Seller deleted.");
-                    con.Close();
+                    DataBase.DeleteUser(Convert.ToInt32(textBoxID.Text));
+                    //con.Open();
+                    //string query = "delete from SellerTbl where SellerId=" + textBoxID.Text + "";
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
+                    //MessageBox.Show("Seller deleted.");
+                    //con.Close();
                     populate();
                     ClearTextboxes();
                 }
@@ -77,12 +81,9 @@ namespace Shop
         {
             try
             {
-                con.Open();
-                string query = "insert into SellerTbl values(" + textBoxID.Text + ",'" + textBoxName.Text + "','" + textBoxAge.Text + "','" + textBoxPhone.Text + "','" + textBoxPassword.Text + "')";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                Seller newSeller = new Seller(textBoxName.Text, Convert.ToInt32(textBoxAge.Text), textBoxPhone.Text, textBoxPassword.Text, checkBoxIsAdmin.Checked);
+                DataBase.AddUser(newSeller);
                 MessageBox.Show("Seller added.");
-                con.Close();
                 populate();
                 ClearTextboxes();
             }
@@ -90,6 +91,21 @@ namespace Shop
             {
                 MessageBox.Show(ex.Message);
             }
+            //try
+            //{
+            //    con.Open();
+            //    string query = "insert into SellerTbl values(" + textBoxID.Text + ",'" + textBoxName.Text + "','" + textBoxAge.Text + "','" + textBoxPhone.Text + "','" + textBoxPassword.Text + "','" + checkBoxIsAdmin.Checked.ToString() + "')";
+            //    SqlCommand cmd = new SqlCommand(query, con);
+            //    cmd.ExecuteNonQuery();
+            //    MessageBox.Show("Seller added.");
+            //    con.Close();
+            //    populate();
+            //    ClearTextboxes();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void ClearTextboxes()
@@ -108,12 +124,14 @@ namespace Shop
                 }
                 else
                 {
-                    con.Open();
-                    string query = "update SellerTbl set SellerName='" + textBoxName.Text + "',SellerAge='" + textBoxAge.Text + "',SellerPhone='" + textBoxPhone.Text + "',SellerPassword='" + textBoxPassword.Text + "' where SellerId=" + textBoxID.Text + ";";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
+                    Seller seller = new Seller(Convert.ToInt32(textBoxID.Text),textBoxName.Text, Convert.ToInt32(textBoxAge.Text), textBoxPhone.Text, textBoxPassword.Text, checkBoxIsAdmin.Checked);
+                    DataBase.EditUser(seller);
+                    //con.Open();
+                    //string query = "update SellerTbl set SellerName='" + textBoxName.Text + "',SellerAge='" + textBoxAge.Text + "',SellerPhone='" + textBoxPhone.Text + "',SellerPassword='" + textBoxPassword.Text + "',IsAdmin='" + checkBoxIsAdmin.Checked.ToString() + "' where SellerId=" + textBoxID.Text + ";";
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
                     MessageBox.Show("Seller edited.");
-                    con.Close();
+                    //con.Close();
                     populate();
                     ClearTextboxes();
                 }
@@ -133,6 +151,17 @@ namespace Shop
         private void labelCategories_Click(object sender, EventArgs e)
         {
             new CategoryForm().Show();
+            this.Hide();
+        }
+
+        private void SellerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelShipping_Click(object sender, EventArgs e)
+        {
+            new ShippingForm().Show();
             this.Hide();
         }
     }

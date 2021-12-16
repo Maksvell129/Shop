@@ -16,11 +16,13 @@ namespace Shop
     {
         Order order = new Order();
         Seller seller = new Seller();
+        Shipping shipping = new Shipping();
 
         public SellingForm(Seller _seller)
         {
             seller = _seller;
             InitializeComponent();
+            FillCombo();
         }
 
         private void labelClose_Click(object sender, EventArgs e)
@@ -77,7 +79,8 @@ namespace Shop
                 newRow.Cells[3].Value = textBoxAmount.Text;
                 newRow.Cells[4].Value = totalProductPrice;
                 dataGridViewOrder.Rows.Add(newRow);
-                labelTotalPrice.Text = "Total price: " + order.Price;
+                labelProductsPrice.Text= "Products price: " + order.Price;
+                labelTotalPrice.Text = "Total price: " + Convert.ToString(order.Price+shipping.Price);
                 Product buf = new Product(n, textBoxName.Text, Convert.ToInt32(textBoxAmount.Text), Convert.ToInt32(textBoxPrice.Text));
                 order.Add(buf);
             }
@@ -95,8 +98,11 @@ namespace Shop
                 e.Graphics.DrawString(item.ToString(), new Font("Century Gothic", 14, FontStyle.Bold), Brushes.Red, new Point(startPosX, startPosY + interval * i));
                 i++;
             }
-            e.Graphics.DrawString("Total price: "+order.Price, new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Green, new Point(startPosX, startPosY + interval * i));
-            e.Graphics.DrawString(order.Date, new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Green, new Point(startPosX, startPosY + interval * (i+1)));
+            e.Graphics.DrawString("Shipping Adress: " + shipping.Name, new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Green, new Point(startPosX, startPosY + interval * i));
+            e.Graphics.DrawString("Shiping price: " + shipping.Price, new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Green, new Point(startPosX, startPosY + interval * (i+1)));
+            e.Graphics.DrawString("Products price: " + order.Price, new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Green, new Point(startPosX, startPosY + interval * (i + 2)));
+            e.Graphics.DrawString("Total price: "+ Convert.ToString(order.Price + shipping.Price), new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Green, new Point(startPosX, startPosY + interval * (i+3)));
+            e.Graphics.DrawString(order.Date, new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Green, new Point(startPosX, startPosY + interval * (i+4)));
 
         }
 
@@ -111,6 +117,46 @@ namespace Shop
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FillCombo()
+        {
+            con.Open();
+            string query = "select ShippingName from ShippingTbl";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader rdr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ShippingName", typeof(string));
+            dt.Load(rdr);
+            comboBoxSelectShipping.ValueMember = "shippingName";
+            comboBoxSelectShipping.DataSource = dt;
+            con.Close();
+        }
+
+        private void comboBoxSelectShipping_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            shipping.Name = comboBoxSelectShipping.SelectedValue.ToString();
+            SetShippingPrice();
+        }
+
+        private void SetShippingPrice()
+        {
+            try
+            {
+                //con.Open();
+                string shippingName = shipping.Name;
+                string query = "select ShippingPrice from ShippingTbl where ShippingName=@shippingName";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@shippingName", shippingName);
+                string shippingPrice = cmd.ExecuteScalar()?.ToString();
+                labelShippingPrice.Text = ("Shipping Price: "+ shippingPrice);
+                shipping.Price = Convert.ToInt32(shippingPrice);
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -38,13 +38,15 @@ namespace Shop
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.labelShop = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
+            this.checkBoxShowPass = new System.Windows.Forms.CheckBox();
+            this.linkLabelRegistration = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
             this.labelLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLogin.Location = new System.Drawing.Point(555, 89);
+            this.labelLogin.Location = new System.Drawing.Point(535, 92);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(92, 29);
             this.labelLogin.TabIndex = 0;
@@ -54,7 +56,7 @@ namespace Shop
             // 
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelUsername.Location = new System.Drawing.Point(278, 231);
+            this.labelUsername.Location = new System.Drawing.Point(251, 229);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(156, 29);
             this.labelUsername.TabIndex = 1;
@@ -64,7 +66,7 @@ namespace Shop
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPassword.Location = new System.Drawing.Point(278, 318);
+            this.labelPassword.Location = new System.Drawing.Point(251, 318);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(159, 29);
             this.labelPassword.TabIndex = 2;
@@ -73,7 +75,7 @@ namespace Shop
             // textBoxUsername
             // 
             this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxUsername.Location = new System.Drawing.Point(481, 226);
+            this.textBoxUsername.Location = new System.Drawing.Point(446, 229);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(238, 34);
             this.textBoxUsername.TabIndex = 3;
@@ -81,7 +83,7 @@ namespace Shop
             // textBoxPassword
             // 
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPassword.Location = new System.Drawing.Point(481, 315);
+            this.textBoxPassword.Location = new System.Drawing.Point(446, 315);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(238, 34);
@@ -90,7 +92,7 @@ namespace Shop
             // buttonLogin
             // 
             this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.Location = new System.Drawing.Point(533, 390);
+            this.buttonLogin.Location = new System.Drawing.Point(511, 364);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(132, 34);
             this.buttonLogin.TabIndex = 6;
@@ -143,11 +145,37 @@ namespace Shop
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
             // 
+            // checkBoxShowPass
+            // 
+            this.checkBoxShowPass.AutoSize = true;
+            this.checkBoxShowPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxShowPass.Location = new System.Drawing.Point(691, 318);
+            this.checkBoxShowPass.Name = "checkBoxShowPass";
+            this.checkBoxShowPass.Size = new System.Drawing.Size(88, 29);
+            this.checkBoxShowPass.TabIndex = 10;
+            this.checkBoxShowPass.Text = "Show";
+            this.checkBoxShowPass.UseVisualStyleBackColor = true;
+            this.checkBoxShowPass.CheckedChanged += new System.EventHandler(this.checkBoxShowPass_CheckedChanged);
+            // 
+            // linkLabelRegistration
+            // 
+            this.linkLabelRegistration.AutoSize = true;
+            this.linkLabelRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabelRegistration.Location = new System.Drawing.Point(506, 401);
+            this.linkLabelRegistration.Name = "linkLabelRegistration";
+            this.linkLabelRegistration.Size = new System.Drawing.Size(142, 29);
+            this.linkLabelRegistration.TabIndex = 11;
+            this.linkLabelRegistration.TabStop = true;
+            this.linkLabelRegistration.Text = "Registration";
+            this.linkLabelRegistration.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRegistration_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.linkLabelRegistration);
+            this.Controls.Add(this.checkBoxShowPass);
             this.Controls.Add(this.labelClose);
             this.Controls.Add(this.labelShop);
             this.Controls.Add(this.guna2CircleButton1);
@@ -178,6 +206,8 @@ namespace Shop
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private System.Windows.Forms.Label labelShop;
         private System.Windows.Forms.Label labelClose;
+        private System.Windows.Forms.CheckBox checkBoxShowPass;
+        private System.Windows.Forms.LinkLabel linkLabelRegistration;
     }
 }
 

@@ -37,6 +37,15 @@ namespace BusinessLib
             IsAdmin = isAdmin;
         }
 
+        public Seller(string name, int age, string phone, string password, bool isAdmin)
+        {
+            Name = name;
+            Age = age;
+            Phone = phone;
+            Password = password;
+            IsAdmin = isAdmin;
+        }
+
         public override string ToString()
         {
             return Convert.ToString(Id) + " " + Name + " " + Convert.ToString(Age) + " " + Phone + " " + Password+((IsAdmin==true)?"Admin":"Seller");

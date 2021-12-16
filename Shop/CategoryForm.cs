@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BusinessLib;
+using DataLib;
 
 namespace Shop
 {
@@ -26,19 +28,23 @@ namespace Shop
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+            new ShippingForm().Show();
+            this.Hide();
         }
+
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Проекты VS\2kurs\ЯП\Shop\ShopDb.mdf;Integrated Security=True;Connect Timeout=30");
+        
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             try 
             {
-                con.Open();
-                string query = "insert into CategoryTbl values("+textBoxID.Text+",'"+textBoxName.Text+"','"+textBoxDescription.Text+"')";
-                SqlCommand cmd = new SqlCommand(query,con);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Category added.");
-                con.Close();
+                DataBase.AddCategory(textBoxName.Text, textBoxDescription.Text);
+                //con.Open();
+                //string query = "insert into CategoryTbl values("+textBoxID.Text+",'"+textBoxName.Text+"','"+textBoxDescription.Text+"')";
+                //SqlCommand cmd = new SqlCommand(query,con);
+                //cmd.ExecuteNonQuery();
+                //MessageBox.Show("Category added.");
+                //con.Close();
                 populate();
                 ClearTextboxes();
             }
@@ -83,12 +89,13 @@ namespace Shop
                 }
                 else
                 {
-                    con.Open();
-                    string query = "delete from CategoryTbl where CategoryId="+textBoxID.Text+"";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Category deleted.");
-                    con.Close();
+                    DataBase.DeleteCategory(Convert.ToInt32(textBoxID.Text));
+                    //con.Open();
+                    //string query = "delete from CategoryTbl where CategoryId="+textBoxID.Text+"";
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
+                    //MessageBox.Show("Category deleted.");
+                    //con.Close();
                     populate();
                     ClearTextboxes();
 
@@ -110,12 +117,13 @@ namespace Shop
                 }
                 else
                 {
-                    con.Open();
-                    string query = "update CategoryTbl set CategoryName='" + textBoxName.Text + "',CategoryDesc='" + textBoxDescription.Text + "' where CategoryId=" + textBoxID.Text + ";";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
+                    DataBase.EditCategory(Convert.ToInt32(textBoxID.Text), textBoxName.Text, textBoxDescription.Text);
+                    //con.Open();
+                    //string query = "update CategoryTbl set CategoryName='" + textBoxName.Text + "',CategoryDesc='" + textBoxDescription.Text + "' where CategoryId=" + textBoxID.Text + ";";
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
                     MessageBox.Show("Category edited.");
-                    con.Close();
+                    //con.Close();
                     populate();
                     ClearTextboxes();
                 }

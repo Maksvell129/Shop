@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BusinessLib;
+using DataLib;
 
 namespace Shop
 {
@@ -74,12 +76,15 @@ namespace Shop
         {
             try
             {
-                con.Open();
-                string query = "insert into ProductTbl values(" + textBoxID.Text + ",'" + textBoxName.Text + "','" + textBoxAmount.Text + "','" + textBoxPrice.Text + "','" + comboBoxSelectCategory.SelectedValue.ToString() + "')";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                Product newProduct = new Product(textBoxName.Text, Convert.ToInt32(textBoxAmount.Text), Convert.ToInt32(textBoxPrice.Text), comboBoxSelectCategory.SelectedValue.ToString());
+                DataBase.AddProduct(newProduct);
                 MessageBox.Show("Product added.");
-                con.Close();
+                //con.Open();
+                //string query = "insert into ProductTbl values(" + textBoxID.Text + ",'" + textBoxName.Text + "','" + textBoxAmount.Text + "','" + textBoxPrice.Text + "','" + comboBoxSelectCategory.SelectedValue.ToString() + "')";
+                //SqlCommand cmd = new SqlCommand(query, con);
+                //cmd.ExecuteNonQuery();
+                //MessageBox.Show("Product added.");
+                //con.Close();
                 populate();
                 ClearTextboxes();
             }
@@ -99,12 +104,13 @@ namespace Shop
                 }
                 else
                 {
-                    con.Open();
-                    string query = "delete from ProductTbl where ProductId=" + textBoxID.Text + "";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Product deleted.");
-                    con.Close();
+                    DataBase.DeleteProduct(Convert.ToInt32(textBoxID.Text));
+                    //con.Open();
+                    //string query = "delete from ProductTbl where ProductId=" + textBoxID.Text + "";
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
+                    //MessageBox.Show("Product deleted.");
+                    //con.Close();
                     populate();
                     ClearTextboxes();
                 }
@@ -134,12 +140,14 @@ namespace Shop
                 }
                 else
                 {
-                    con.Open();
-                    string query = "update ProductTbl set ProductName='" + textBoxName.Text + "',ProductAmount='" + textBoxAmount.Text + "',ProductPrice='" + textBoxPrice.Text + "',ProductCategory='" + comboBoxSelectCategory.SelectedValue.ToString() + "' where ProductId=" + textBoxID.Text + ";";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Product edited.");
-                    con.Close();
+                    Product product = new Product(Convert.ToInt32(textBoxID.Text), textBoxName.Text, Convert.ToInt32(textBoxAmount.Text), Convert.ToInt32(textBoxPrice.Text), comboBoxSelectCategory.SelectedValue.ToString());
+                    DataBase.EditProduct(product);
+                    //con.Open();
+                    //string query = "update ProductTbl set ProductName='" + textBoxName.Text + "',ProductAmount='" + textBoxAmount.Text + "',ProductPrice='" + textBoxPrice.Text + "',ProductCategory='" + comboBoxSelectCategory.SelectedValue.ToString() + "' where ProductId=" + textBoxID.Text + ";";
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
+                    //MessageBox.Show("Product edited.");
+                    //con.Close();
                     populate();
                     ClearTextboxes();
                 }
@@ -158,7 +166,8 @@ namespace Shop
 
         private void labelSelling_Click(object sender, EventArgs e)
         {
-
+            new ShippingForm().Show();
+            this.Hide();
         }
 
         private void ClearTextboxes()
@@ -177,6 +186,11 @@ namespace Shop
             sda.Fill(ds);
             dataGridViewProducts.DataSource = ds.Tables[0];
             con.Close();
+        }
+
+        private void comboBoxSelectCatShow_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

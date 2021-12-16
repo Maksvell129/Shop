@@ -25,13 +25,29 @@ namespace BusinessLib
 
         }
 
-        public Product(int id, string name,int amount, int price/*,string category*/)
+        public Product(string name,int amount, int price, string category)
+        {
+            Name = name;
+            Amount = amount;
+            Price = price;
+            Category = category;
+        }
+
+        public Product(int id, string name, int amount, int price)
         {
             Id = id;
             Name = name;
             Amount = amount;
             Price = price;
-            //Category = category;
+        }
+
+        public Product(int id, string name, int amount, int price, string category)
+        {
+            Id = id;
+            Name = name;
+            Amount = amount;
+            Price = price;
+            Category = category;
         }
 
         public override string ToString()

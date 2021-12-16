@@ -47,7 +47,7 @@ namespace Shop
             this.labelClose = new System.Windows.Forms.Label();
             this.labelSellers = new System.Windows.Forms.Label();
             this.labelProducts = new System.Windows.Forms.Label();
-            this.labelSelling = new System.Windows.Forms.Label();
+            this.labelShipping = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGategories)).BeginInit();
             this.SuspendLayout();
@@ -254,6 +254,7 @@ namespace Shop
             this.textBoxID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textBoxID.DisabledState.Parent = this.textBoxID;
             this.textBoxID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBoxID.Enabled = false;
             this.textBoxID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxID.FocusedState.Parent = this.textBoxID;
             this.textBoxID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
@@ -361,23 +362,23 @@ namespace Shop
             this.labelProducts.Text = "Products";
             this.labelProducts.Click += new System.EventHandler(this.labelProducts_Click);
             // 
-            // labelSelling
+            // labelShipping
             // 
-            this.labelSelling.AutoSize = true;
-            this.labelSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSelling.Location = new System.Drawing.Point(279, 23);
-            this.labelSelling.Name = "labelSelling";
-            this.labelSelling.Size = new System.Drawing.Size(113, 36);
-            this.labelSelling.TabIndex = 17;
-            this.labelSelling.Text = "Selling";
-            this.labelSelling.Click += new System.EventHandler(this.label2_Click);
+            this.labelShipping.AutoSize = true;
+            this.labelShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelShipping.Location = new System.Drawing.Point(279, 23);
+            this.labelShipping.Name = "labelShipping";
+            this.labelShipping.Size = new System.Drawing.Size(142, 36);
+            this.labelShipping.TabIndex = 17;
+            this.labelShipping.Text = "Shipping";
+            this.labelShipping.Click += new System.EventHandler(this.label2_Click);
             // 
             // CategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 722);
-            this.Controls.Add(this.labelSelling);
+            this.Controls.Add(this.labelShipping);
             this.Controls.Add(this.labelProducts);
             this.Controls.Add(this.labelSellers);
             this.Controls.Add(this.labelClose);
@@ -412,6 +413,6 @@ namespace Shop
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelSellers;
         private System.Windows.Forms.Label labelProducts;
-        private System.Windows.Forms.Label labelSelling;
+        private System.Windows.Forms.Label labelShipping;
     }
 }

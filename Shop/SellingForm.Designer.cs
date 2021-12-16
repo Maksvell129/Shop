@@ -46,12 +46,9 @@ namespace Shop
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonRefresh = new Guna.UI2.WinForms.Guna2Button();
             this.dataGridViewProducts = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.buttonDelete = new Guna.UI2.WinForms.Guna2Button();
-            this.buttonEdit = new Guna.UI2.WinForms.Guna2Button();
             this.buttonAdd = new Guna.UI2.WinForms.Guna2Button();
-            this.comboBoxSelectCategory = new System.Windows.Forms.ComboBox();
+            this.comboBoxSelectShipping = new System.Windows.Forms.ComboBox();
             this.textBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxAmount = new Guna.UI2.WinForms.Guna2TextBox();
@@ -64,6 +61,8 @@ namespace Shop
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.labelShippingPrice = new System.Windows.Forms.Label();
+            this.labelProductsPrice = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
@@ -83,15 +82,14 @@ namespace Shop
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Purple;
+            this.panel1.Controls.Add(this.labelProductsPrice);
+            this.panel1.Controls.Add(this.labelShippingPrice);
             this.panel1.Controls.Add(this.buttonPrint);
             this.panel1.Controls.Add(this.labelTotalPrice);
             this.panel1.Controls.Add(this.dataGridViewOrder);
-            this.panel1.Controls.Add(this.buttonRefresh);
             this.panel1.Controls.Add(this.dataGridViewProducts);
-            this.panel1.Controls.Add(this.buttonDelete);
-            this.panel1.Controls.Add(this.buttonEdit);
             this.panel1.Controls.Add(this.buttonAdd);
-            this.panel1.Controls.Add(this.comboBoxSelectCategory);
+            this.panel1.Controls.Add(this.comboBoxSelectShipping);
             this.panel1.Controls.Add(this.textBoxPrice);
             this.panel1.Controls.Add(this.labelPrice);
             this.panel1.Controls.Add(this.textBoxAmount);
@@ -122,7 +120,7 @@ namespace Shop
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonPrint.ForeColor = System.Drawing.Color.Purple;
             this.buttonPrint.HoverState.Parent = this.buttonPrint;
-            this.buttonPrint.Location = new System.Drawing.Point(716, 554);
+            this.buttonPrint.Location = new System.Drawing.Point(1030, 593);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.ShadowDecoration.Parent = this.buttonPrint;
             this.buttonPrint.Size = new System.Drawing.Size(128, 59);
@@ -134,7 +132,7 @@ namespace Shop
             // 
             this.labelTotalPrice.AutoSize = true;
             this.labelTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTotalPrice.Location = new System.Drawing.Point(472, 386);
+            this.labelTotalPrice.Location = new System.Drawing.Point(467, 522);
             this.labelTotalPrice.Name = "labelTotalPrice";
             this.labelTotalPrice.Size = new System.Drawing.Size(148, 29);
             this.labelTotalPrice.TabIndex = 22;
@@ -234,30 +232,6 @@ namespace Shop
             this.Total.MinimumWidth = 6;
             this.Total.Name = "Total";
             // 
-            // buttonRefresh
-            // 
-            this.buttonRefresh.Animated = true;
-            this.buttonRefresh.AutoRoundedCorners = true;
-            this.buttonRefresh.BorderRadius = 25;
-            this.buttonRefresh.BorderThickness = 2;
-            this.buttonRefresh.CheckedState.Parent = this.buttonRefresh;
-            this.buttonRefresh.CustomImages.Parent = this.buttonRefresh;
-            this.buttonRefresh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonRefresh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonRefresh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonRefresh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonRefresh.DisabledState.Parent = this.buttonRefresh;
-            this.buttonRefresh.FillColor = System.Drawing.Color.White;
-            this.buttonRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonRefresh.ForeColor = System.Drawing.Color.Purple;
-            this.buttonRefresh.HoverState.Parent = this.buttonRefresh;
-            this.buttonRefresh.Location = new System.Drawing.Point(286, 263);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.ShadowDecoration.Parent = this.buttonRefresh;
-            this.buttonRefresh.Size = new System.Drawing.Size(128, 52);
-            this.buttonRefresh.TabIndex = 20;
-            this.buttonRefresh.Text = "Refresh";
-            // 
             // dataGridViewProducts
             // 
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
@@ -286,13 +260,13 @@ namespace Shop
             this.dataGridViewProducts.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewProducts.EnableHeadersVisualStyles = false;
             this.dataGridViewProducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataGridViewProducts.Location = new System.Drawing.Point(23, 321);
+            this.dataGridViewProducts.Location = new System.Drawing.Point(23, 263);
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.RowHeadersVisible = false;
             this.dataGridViewProducts.RowHeadersWidth = 51;
             this.dataGridViewProducts.RowTemplate.Height = 24;
             this.dataGridViewProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(391, 331);
+            this.dataGridViewProducts.Size = new System.Drawing.Size(391, 389);
             this.dataGridViewProducts.TabIndex = 19;
             this.dataGridViewProducts.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridViewProducts.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -317,54 +291,6 @@ namespace Shop
             this.dataGridViewProducts.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dataGridViewProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProducts_CellContentClick);
             // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Animated = true;
-            this.buttonDelete.AutoRoundedCorners = true;
-            this.buttonDelete.BorderRadius = 28;
-            this.buttonDelete.BorderThickness = 2;
-            this.buttonDelete.CheckedState.Parent = this.buttonDelete;
-            this.buttonDelete.CustomImages.Parent = this.buttonDelete;
-            this.buttonDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonDelete.DisabledState.Parent = this.buttonDelete;
-            this.buttonDelete.FillColor = System.Drawing.Color.White;
-            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonDelete.ForeColor = System.Drawing.Color.Purple;
-            this.buttonDelete.HoverState.Parent = this.buttonDelete;
-            this.buttonDelete.Location = new System.Drawing.Point(1027, 554);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.ShadowDecoration.Parent = this.buttonDelete;
-            this.buttonDelete.Size = new System.Drawing.Size(131, 59);
-            this.buttonDelete.TabIndex = 18;
-            this.buttonDelete.Text = "DELETE";
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.Animated = true;
-            this.buttonEdit.AutoRoundedCorners = true;
-            this.buttonEdit.BorderRadius = 28;
-            this.buttonEdit.BorderThickness = 2;
-            this.buttonEdit.CheckedState.Parent = this.buttonEdit;
-            this.buttonEdit.CustomImages.Parent = this.buttonEdit;
-            this.buttonEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonEdit.DisabledState.Parent = this.buttonEdit;
-            this.buttonEdit.FillColor = System.Drawing.Color.White;
-            this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonEdit.ForeColor = System.Drawing.Color.Purple;
-            this.buttonEdit.HoverState.Parent = this.buttonEdit;
-            this.buttonEdit.Location = new System.Drawing.Point(890, 554);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.ShadowDecoration.Parent = this.buttonEdit;
-            this.buttonEdit.Size = new System.Drawing.Size(99, 59);
-            this.buttonEdit.TabIndex = 17;
-            this.buttonEdit.Text = "EDIT";
-            // 
             // buttonAdd
             // 
             this.buttonAdd.Animated = true;
@@ -382,7 +308,7 @@ namespace Shop
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonAdd.ForeColor = System.Drawing.Color.Purple;
             this.buttonAdd.HoverState.Parent = this.buttonAdd;
-            this.buttonAdd.Location = new System.Drawing.Point(436, 554);
+            this.buttonAdd.Location = new System.Drawing.Point(435, 593);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.ShadowDecoration.Parent = this.buttonAdd;
             this.buttonAdd.Size = new System.Drawing.Size(99, 59);
@@ -390,18 +316,16 @@ namespace Shop
             this.buttonAdd.Text = "ADD";
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // comboBoxSelectCategory
+            // comboBoxSelectShipping
             // 
-            this.comboBoxSelectCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxSelectCategory.FormattingEnabled = true;
-            this.comboBoxSelectCategory.Items.AddRange(new object[] {
-            "ADMIN",
-            "SELLER"});
-            this.comboBoxSelectCategory.Location = new System.Drawing.Point(23, 273);
-            this.comboBoxSelectCategory.Name = "comboBoxSelectCategory";
-            this.comboBoxSelectCategory.Size = new System.Drawing.Size(247, 33);
-            this.comboBoxSelectCategory.TabIndex = 15;
-            this.comboBoxSelectCategory.Text = "Select Category";
+            this.comboBoxSelectShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxSelectShipping.FormattingEnabled = true;
+            this.comboBoxSelectShipping.Location = new System.Drawing.Point(472, 376);
+            this.comboBoxSelectShipping.Name = "comboBoxSelectShipping";
+            this.comboBoxSelectShipping.Size = new System.Drawing.Size(247, 33);
+            this.comboBoxSelectShipping.TabIndex = 15;
+            this.comboBoxSelectShipping.Text = "Select Shipping";
+            this.comboBoxSelectShipping.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectShipping_SelectedIndexChanged);
             // 
             // textBoxPrice
             // 
@@ -492,6 +416,7 @@ namespace Shop
             this.textBoxID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textBoxID.DisabledState.Parent = this.textBoxID;
             this.textBoxID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBoxID.Enabled = false;
             this.textBoxID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxID.FocusedState.Parent = this.textBoxID;
             this.textBoxID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
@@ -593,6 +518,26 @@ namespace Shop
             this.labelUsername.Text = "label1";
             this.labelUsername.Click += new System.EventHandler(this.label1_Click);
             // 
+            // labelShippingPrice
+            // 
+            this.labelShippingPrice.AutoSize = true;
+            this.labelShippingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelShippingPrice.Location = new System.Drawing.Point(467, 432);
+            this.labelShippingPrice.Name = "labelShippingPrice";
+            this.labelShippingPrice.Size = new System.Drawing.Size(192, 29);
+            this.labelShippingPrice.TabIndex = 24;
+            this.labelShippingPrice.Text = "Shipping Price:";
+            // 
+            // labelProductsPrice
+            // 
+            this.labelProductsPrice.AutoSize = true;
+            this.labelProductsPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelProductsPrice.Location = new System.Drawing.Point(467, 478);
+            this.labelProductsPrice.Name = "labelProductsPrice";
+            this.labelProductsPrice.Size = new System.Drawing.Size(191, 29);
+            this.labelProductsPrice.TabIndex = 25;
+            this.labelProductsPrice.Text = "Products Price:";
+            // 
             // SellingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -620,12 +565,9 @@ namespace Shop
 
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2Button buttonRefresh;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewProducts;
-        private Guna.UI2.WinForms.Guna2Button buttonDelete;
-        private Guna.UI2.WinForms.Guna2Button buttonEdit;
         private Guna.UI2.WinForms.Guna2Button buttonAdd;
-        private System.Windows.Forms.ComboBox comboBoxSelectCategory;
+        private System.Windows.Forms.ComboBox comboBoxSelectShipping;
         private Guna.UI2.WinForms.Guna2TextBox textBoxPrice;
         private System.Windows.Forms.Label labelPrice;
         private Guna.UI2.WinForms.Guna2TextBox textBoxAmount;
@@ -646,5 +588,7 @@ namespace Shop
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.Label labelShippingPrice;
+        private System.Windows.Forms.Label labelProductsPrice;
     }
 }

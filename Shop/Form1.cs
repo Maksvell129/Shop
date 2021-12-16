@@ -123,5 +123,23 @@ namespace Shop
         {
 
         }
+
+        private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxShowPass.Checked==true)
+            {
+                textBoxPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                textBoxPassword.PasswordChar = '*';
+            }
+
+        }
+
+        private void linkLabelRegistration_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new RegistrationForm().Show();
+        }
     }
 }

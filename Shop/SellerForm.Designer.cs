@@ -29,10 +29,12 @@ namespace Shop
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxIsAdmin = new System.Windows.Forms.CheckBox();
+            this.labelIsAdmin = new System.Windows.Forms.Label();
             this.textBoxPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridViewSellers = new Guna.UI2.WinForms.Guna2DataGridView();
             this.buttonDelete = new Guna.UI2.WinForms.Guna2Button();
@@ -49,7 +51,7 @@ namespace Shop
             this.labelID = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
             this.labelManageSellers = new System.Windows.Forms.Label();
-            this.labelSelling = new System.Windows.Forms.Label();
+            this.labelShipping = new System.Windows.Forms.Label();
             this.labelCategories = new System.Windows.Forms.Label();
             this.labelProducts = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -59,6 +61,8 @@ namespace Shop
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Purple;
+            this.panel1.Controls.Add(this.checkBoxIsAdmin);
+            this.panel1.Controls.Add(this.labelIsAdmin);
             this.panel1.Controls.Add(this.textBoxPassword);
             this.panel1.Controls.Add(this.dataGridViewSellers);
             this.panel1.Controls.Add(this.buttonDelete);
@@ -77,6 +81,26 @@ namespace Shop
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1176, 608);
             this.panel1.TabIndex = 1;
+            // 
+            // checkBoxIsAdmin
+            // 
+            this.checkBoxIsAdmin.AutoSize = true;
+            this.checkBoxIsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxIsAdmin.Location = new System.Drawing.Point(172, 332);
+            this.checkBoxIsAdmin.Name = "checkBoxIsAdmin";
+            this.checkBoxIsAdmin.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxIsAdmin.TabIndex = 24;
+            this.checkBoxIsAdmin.UseVisualStyleBackColor = true;
+            // 
+            // labelIsAdmin
+            // 
+            this.labelIsAdmin.AutoSize = true;
+            this.labelIsAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelIsAdmin.Location = new System.Drawing.Point(18, 325);
+            this.labelIsAdmin.Name = "labelIsAdmin";
+            this.labelIsAdmin.Size = new System.Drawing.Size(113, 29);
+            this.labelIsAdmin.TabIndex = 23;
+            this.labelIsAdmin.Text = "Is Admin";
             // 
             // textBoxPassword
             // 
@@ -108,30 +132,30 @@ namespace Shop
             // 
             // dataGridViewSellers
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataGridViewSellers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridViewSellers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSellers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSellers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSellers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSellers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewSellers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSellers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSellers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewSellers.ColumnHeadersHeight = 25;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSellers.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewSellers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewSellers.EnableHeadersVisualStyles = false;
             this.dataGridViewSellers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewSellers.Location = new System.Drawing.Point(448, 62);
@@ -182,7 +206,7 @@ namespace Shop
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonDelete.ForeColor = System.Drawing.Color.Purple;
             this.buttonDelete.HoverState.Parent = this.buttonDelete;
-            this.buttonDelete.Location = new System.Drawing.Point(284, 340);
+            this.buttonDelete.Location = new System.Drawing.Point(284, 367);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.ShadowDecoration.Parent = this.buttonDelete;
             this.buttonDelete.Size = new System.Drawing.Size(131, 59);
@@ -207,7 +231,7 @@ namespace Shop
             this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonEdit.ForeColor = System.Drawing.Color.Purple;
             this.buttonEdit.HoverState.Parent = this.buttonEdit;
-            this.buttonEdit.Location = new System.Drawing.Point(157, 340);
+            this.buttonEdit.Location = new System.Drawing.Point(148, 367);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.ShadowDecoration.Parent = this.buttonEdit;
             this.buttonEdit.Size = new System.Drawing.Size(99, 59);
@@ -232,7 +256,7 @@ namespace Shop
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonAdd.ForeColor = System.Drawing.Color.Purple;
             this.buttonAdd.HoverState.Parent = this.buttonAdd;
-            this.buttonAdd.Location = new System.Drawing.Point(23, 340);
+            this.buttonAdd.Location = new System.Drawing.Point(23, 367);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.ShadowDecoration.Parent = this.buttonAdd;
             this.buttonAdd.Size = new System.Drawing.Size(99, 59);
@@ -338,6 +362,7 @@ namespace Shop
             this.textBoxID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textBoxID.DisabledState.Parent = this.textBoxID;
             this.textBoxID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBoxID.Enabled = false;
             this.textBoxID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxID.FocusedState.Parent = this.textBoxID;
             this.textBoxID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
@@ -423,15 +448,16 @@ namespace Shop
             this.labelManageSellers.TabIndex = 12;
             this.labelManageSellers.Text = "Manage Sellers";
             // 
-            // labelSelling
+            // labelShipping
             // 
-            this.labelSelling.AutoSize = true;
-            this.labelSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSelling.Location = new System.Drawing.Point(352, 22);
-            this.labelSelling.Name = "labelSelling";
-            this.labelSelling.Size = new System.Drawing.Size(113, 36);
-            this.labelSelling.TabIndex = 20;
-            this.labelSelling.Text = "Selling";
+            this.labelShipping.AutoSize = true;
+            this.labelShipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelShipping.Location = new System.Drawing.Point(383, 22);
+            this.labelShipping.Name = "labelShipping";
+            this.labelShipping.Size = new System.Drawing.Size(142, 36);
+            this.labelShipping.TabIndex = 20;
+            this.labelShipping.Text = "Shipping";
+            this.labelShipping.Click += new System.EventHandler(this.labelShipping_Click);
             // 
             // labelCategories
             // 
@@ -460,7 +486,7 @@ namespace Shop
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 722);
-            this.Controls.Add(this.labelSelling);
+            this.Controls.Add(this.labelShipping);
             this.Controls.Add(this.labelCategories);
             this.Controls.Add(this.labelProducts);
             this.Controls.Add(this.labelManageSellers);
@@ -470,6 +496,7 @@ namespace Shop
             this.Name = "SellerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SellerForm";
+            this.Load += new System.EventHandler(this.SellerForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSellers)).EndInit();
@@ -497,8 +524,10 @@ namespace Shop
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelManageSellers;
         private Guna.UI2.WinForms.Guna2TextBox textBoxPassword;
-        private System.Windows.Forms.Label labelSelling;
+        private System.Windows.Forms.Label labelShipping;
         private System.Windows.Forms.Label labelCategories;
         private System.Windows.Forms.Label labelProducts;
+        private System.Windows.Forms.CheckBox checkBoxIsAdmin;
+        private System.Windows.Forms.Label labelIsAdmin;
     }
 }
